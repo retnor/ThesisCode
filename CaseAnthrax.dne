@@ -1,0 +1,107 @@
+// ~->[DNET-1]->~
+
+// File created by an unlicensed user using Netica 5.04 on Sep 17, 2018 at 11:35:39.
+
+bnet CaseAnthrax {
+autoupdate = FALSE;
+
+node Pregnancy {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (NotPregnant, Pregnant);
+	parents = ();
+	};
+
+node Eating {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (Meatatarian, Unknown, Vegetarian);
+	parents = ();
+	};
+
+node InfectiousDisease {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (Anthrax);
+	parents = ();
+	};
+
+node Country {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (US);
+	parents = ();
+	};
+
+node Gender {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (Female, Male);
+	parents = ();
+	};
+
+node Smoking {
+	kind = NATURE;
+	discrete = TRUE;
+	states = (ExSmoker, NonSmoker, Smoker, Unknown);
+	parents = ();
+	};
+
+node Anthrax {
+	kind = NATURE;
+	discrete = TRUE;
+	chance = CHANCE;
+	states = (AtRisk, NotAtRisk);
+	parents = (Pregnancy, Eating, InfectiousDisease, Country, Gender, Smoking);
+	probs = 
+		// AtRisk       NotAtRisk     // Pregnancy   Eating      InfectiousDisease Country Gender Smoking   
+		  (0.0012,      0.9988,       // NotPregnant Meatatarian Anthrax           US      Female ExSmoker  
+		   8.4e-4,      0.99916,      // NotPregnant Meatatarian Anthrax           US      Female NonSmoker 
+		   0.00168,     0.99832,      // NotPregnant Meatatarian Anthrax           US      Female Smoker    
+		   0.0012,      0.9988,       // NotPregnant Meatatarian Anthrax           US      Female Unknown   
+		   0.0012,      0.9988,       // NotPregnant Meatatarian Anthrax           US      Male   ExSmoker  
+		   8.4e-4,      0.99916,      // NotPregnant Meatatarian Anthrax           US      Male   NonSmoker 
+		   0.0156,      0.9844,       // NotPregnant Meatatarian Anthrax           US      Male   Smoker    
+		   0.0012,      0.9988,       // NotPregnant Meatatarian Anthrax           US      Male   Unknown   
+		   0.0012,      0.9988,       // NotPregnant Unknown     Anthrax           US      Female ExSmoker  
+		   8.4e-4,      0.99916,      // NotPregnant Unknown     Anthrax           US      Female NonSmoker 
+		   0.00168,     0.99832,      // NotPregnant Unknown     Anthrax           US      Female Smoker    
+		   0.0012,      0.9988,       // NotPregnant Unknown     Anthrax           US      Female Unknown   
+		   0.0012,      0.9988,       // NotPregnant Unknown     Anthrax           US      Male   ExSmoker  
+		   8.4e-4,      0.99916,      // NotPregnant Unknown     Anthrax           US      Male   NonSmoker 
+		   0.0156,      0.9844,       // NotPregnant Unknown     Anthrax           US      Male   Smoker    
+		   0.0012,      0.9988,       // NotPregnant Unknown     Anthrax           US      Male   Unknown   
+		   0.0012,      0.9988,       // NotPregnant Vegetarian  Anthrax           US      Female ExSmoker  
+		   8.4e-4,      0.99916,      // NotPregnant Vegetarian  Anthrax           US      Female NonSmoker 
+		   0.00168,     0.99832,      // NotPregnant Vegetarian  Anthrax           US      Female Smoker    
+		   0.0012,      0.9988,       // NotPregnant Vegetarian  Anthrax           US      Female Unknown   
+		   0.0012,      0.9988,       // NotPregnant Vegetarian  Anthrax           US      Male   ExSmoker  
+		   8.4e-4,      0.99916,      // NotPregnant Vegetarian  Anthrax           US      Male   NonSmoker 
+		   0.0156,      0.9844,       // NotPregnant Vegetarian  Anthrax           US      Male   Smoker    
+		   0.0012,      0.9988,       // NotPregnant Vegetarian  Anthrax           US      Male   Unknown   
+		   0.0012,      0.9988,       // Pregnant    Meatatarian Anthrax           US      Female ExSmoker  
+		   8.4e-4,      0.99916,      // Pregnant    Meatatarian Anthrax           US      Female NonSmoker 
+		   0.00168,     0.99832,      // Pregnant    Meatatarian Anthrax           US      Female Smoker    
+		   0.0012,      0.9988,       // Pregnant    Meatatarian Anthrax           US      Female Unknown   
+		   0,           1,            // Pregnant    Meatatarian Anthrax           US      Male   ExSmoker  
+		   0,           1,            // Pregnant    Meatatarian Anthrax           US      Male   NonSmoker 
+		   0,           1,            // Pregnant    Meatatarian Anthrax           US      Male   Smoker    
+		   0,           1,            // Pregnant    Meatatarian Anthrax           US      Male   Unknown   
+		   0.0012,      0.9988,       // Pregnant    Unknown     Anthrax           US      Female ExSmoker  
+		   8.4e-4,      0.99916,      // Pregnant    Unknown     Anthrax           US      Female NonSmoker 
+		   0.00168,     0.99832,      // Pregnant    Unknown     Anthrax           US      Female Smoker    
+		   0.0012,      0.9988,       // Pregnant    Unknown     Anthrax           US      Female Unknown   
+		   0,           1,            // Pregnant    Unknown     Anthrax           US      Male   ExSmoker  
+		   0,           1,            // Pregnant    Unknown     Anthrax           US      Male   NonSmoker 
+		   0,           1,            // Pregnant    Unknown     Anthrax           US      Male   Smoker    
+		   0,           1,            // Pregnant    Unknown     Anthrax           US      Male   Unknown   
+		   0.0012,      0.9988,       // Pregnant    Vegetarian  Anthrax           US      Female ExSmoker  
+		   8.4e-4,      0.99916,      // Pregnant    Vegetarian  Anthrax           US      Female NonSmoker 
+		   0.00168,     0.99832,      // Pregnant    Vegetarian  Anthrax           US      Female Smoker    
+		   0.0012,      0.9988,       // Pregnant    Vegetarian  Anthrax           US      Female Unknown   
+		   0,           1,            // Pregnant    Vegetarian  Anthrax           US      Male   ExSmoker  
+		   0,           1,            // Pregnant    Vegetarian  Anthrax           US      Male   NonSmoker 
+		   0,           1,            // Pregnant    Vegetarian  Anthrax           US      Male   Smoker    
+		   0,           1);           // Pregnant    Vegetarian  Anthrax           US      Male   Unknown   ;
+	};
+};
