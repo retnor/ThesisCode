@@ -14,20 +14,24 @@ public class GetBeliefs {
 		
 //		This is for Anthrax
 		
-//		inputtedBeliefs.add("Vegan");	//Eating
-//		inputtedBeliefs.add("Equatorial");	//Hemisphere
-//		inputtedBeliefs.add("Female");		//Gender
+		
+//		inputtedBeliefs.add("Equatorial");	//Hemisphere	
 //		inputtedBeliefs.add("Forest");		//Natural
 //		inputtedBeliefs.add("Sunny");		//Weather
 //		inputtedBeliefs.add("Jobless");	//Occupation
 //		inputtedBeliefs.add("Influenza");	//PreExistingIllness
 //		inputtedBeliefs.add("Farms");		//ManMade
-//		inputtedBeliefs.add("Elderly");	//DevelopmentStage
-//		inputtedBeliefs.add("Indonesia");	//Country
 //		inputtedBeliefs.add("Rain");		//Season
 //		inputtedBeliefs.add("Rash");		//Symptom
-//		inputtedBeliefs.add("Smoker");		//Smoking
 		
+		inputtedBeliefs.add("Pregnant");	//DevelopmentStage
+		inputtedBeliefs.add("Vegetarian");		//Eating
+		inputtedBeliefs.add("Anthrax");		//Eating
+		inputtedBeliefs.add("US");	//Country
+		inputtedBeliefs.add("Female");		//Gender
+		inputtedBeliefs.add("Smoker");		//Smoking
+		
+			
 //		This is for Crohn's Disease
 		
 //		inputtedBeliefs.add("NotSpecified");	//Weather
@@ -62,9 +66,9 @@ public class GetBeliefs {
 	public static double calculate() throws NeticaException{
 		Environ env = new Environ (null);
 		
-		Net net = new Net (new Streamer ("Den.dne"));
+		Net net = new Net (new Streamer ("CaseAnthrax.dne"));
 		
-		Node disease	= net.getNode("Tuberculosis");
+		Node disease	= net.getNode("Anthrax");
 		
 		//Read in the net
 		NodeList nodes = net.getNodes();
